@@ -401,31 +401,31 @@
     </style>
 </head>
 
-<body class="antialiased mx-0">
-    <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
+<body class=" mx-0">
+    <div class="min-h-screen bg-gray-100 dark:bg-gray-900 row h-100 mx-0">
 
 
-    <div class="col-md-8">
-    <div class="card p-md-5">
-    <div class="card-body m-md-2">
+    <div class="col-md-8 mx-auto my-auto">
+    <div class="card p-md-5 mx-0">
+    <div class="card-body m-md-2 mx-0">
               
 
 
-                        <div class='text-center m-md-4 mx-0'>
+                        <div class='text-center m-4 mx-0'>
 
                         
                             @if (Route::has('login'))
 
                         @auth
-                        <a href="{{ url('/dashboard') }}" class="text-gray-700 underline  m-md-5">Dashboard</a>
+                        <a href="{{ url('/productos') }}" class="text-gray-700 underline  m-md-5">Lista de productos</a>
                         @else
-                        <a href="{{ route('login') }}" class="text-gray-700 underline m-md-5">Iniciar sesión</a>
+                        <a href="{{ route('login') }}" class="text-gray-700 underline  m-sm-5">Iniciar sesión</a>
                         </div>
 
-                        <div class='text-center m-md-4'>
+                        <div class='text-center m-4'>
 
                                 @if (Route::has('register'))
-                        <a href="{{ route('register') }}" class="text-gray-700 underline  m-md-5">Registrarse</a>
+                        <a href="{{ route('register') }}" class="text-gray-700 underline  m-sm-5">Registrarse</a>
                         @endif
                         @endauth
 
