@@ -18,20 +18,20 @@ class CreateProductosTable extends Migration
             $table->string('nombre');
             $table->decimal('precio', 8, 2);
             //  $table->string('usuarioid');
-            $table->unsignedBigInteger('usuarioid')->nullable(); 
+            $table->unsignedBigInteger('usuarioid')->nullable();
             // Este hará referencia al id del usuario
             // Especificamos que se pueda poner nulo por si se borra el usuario
 
-            //Tengo que poner una restricción de llave foránea para que no haya un número que no pertenezca a un id existente
+            //Restricción de llave foránea para que no haya un número que no pertenezca a un id existente
 
             $table->foreign('usuarioid')
-            ->references('id')
-            ->on('users')
-            ->onDelete('set null');
+                ->references('id')
+                ->on('users')
+                ->onDelete('set null');
 
             //references: a qué campo hace referencia | on: en qué tabla | 
             //on delete - set null - Si se elimina un usuario, no quiero que se elimine sus productos
-            // si esta campo va a quedar null, tenemos que especificar arriba, que pueda aceptar valores nulos
+            // si este campo va a quedar null, tenemos que especificar arriba, que pueda aceptar valores nulos
 
 
 

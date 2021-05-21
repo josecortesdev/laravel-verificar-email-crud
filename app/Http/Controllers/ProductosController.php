@@ -20,15 +20,14 @@ class ProductosController extends Controller
         //El where es clave, es lo que nos permite que guarde solo los productos del usuario con este id
         //Si queremos una lista que compartan todos los usuarios, tendríamos que hacerlo de otra manera
 
-        //ASÍ SERÍA PARA MOSTRAR SOLO LOS PRODUCTOS DE CADA USUARIO (A PARTIR DE SU ID)
+        //En el caso de que quieras mostrar los productos de cada usuario (a partir de su id), dejo comentada esta opción: 
+        // $productos = Producto::where('usuarioid', $usuarioId)->paginate(5); 
         //usuarioid es el campo que creaste en la tabla para identificar cada producto con el usuario
-       // $productos = Producto::where('usuarioid', $usuarioId)->paginate(5); 
 
         $productos = Producto::paginate(5);
 
 
         return view('productos.lista', compact('productos'));
-
     }
 
     /**
@@ -52,14 +51,12 @@ class ProductosController extends Controller
         //Este es el que gestiona el crear un nuevo producto
 
         $producto = new Producto();
-        $producto->nombre = $request->nombre; 
-        $producto->precio = $request->precio; 
+        $producto->nombre = $request->nombre;
+        $producto->precio = $request->precio;
         $producto->usuarioid = auth()->user()->id;  // Para acceder a la info del user
         $producto->save();
 
         return back()->with('mensaje', 'Producto agregado');
-
-
     }
 
     /**
@@ -100,7 +97,7 @@ class ProductosController extends Controller
     {
         //recibir la info de la vista
         $productoUpdate = Producto::findOrFail($id);
- 
+
 
         //modificar el registro producto y guardarlo
         $productoUpdate->nombre = $request->nombre;
@@ -123,7 +120,7 @@ class ProductosController extends Controller
     {
         $productoEliminar = Producto::findOrFail($id);
         $productoEliminar->delete();
-        
+
         return back()->with('eliminado', 'Producto eliminado');
     }
 }
